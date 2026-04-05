@@ -12,7 +12,6 @@ def prepare_and_save_bayesian_components(file_path, output_folder):
     total_population = len(df)
     
     # 1. THE PRIOR FOR ALL DISEASES
-    # Note: Using 'diseases' as per your screenshot
     prior_for_all_diseases = df['diseases'].value_counts() / total_population
     prior_for_all_diseases.to_csv(os.path.join(output_folder, "disease_priors.csv"), header=['prior_probability'])
     
@@ -27,7 +26,7 @@ def prepare_and_save_bayesian_components(file_path, output_folder):
 
     print(f"Success! All 3 Bayesian components saved in '{output_folder}'")
 
-# --- Dynamic Path Logic ---
+# Dynamic Path Logic 
 
 # 1. Get the directory where THIS script is currently sitting
 # This points to '.../Extracting_features'
@@ -40,7 +39,7 @@ output_dir = os.path.join(current_script_dir, "Extracting_likelihood")
 project_root = os.path.dirname(current_script_dir)
 input_csv = os.path.join(project_root, "1_Installing_Data", "data", "Diseases_and_Symptoms_dataset.csv")
 
-# --- Execution ---
+# Execution 
 if os.path.exists(input_csv):
     prepare_and_save_bayesian_components(input_csv, output_dir)
 else:
